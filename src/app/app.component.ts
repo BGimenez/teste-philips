@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { WdbpComponent } from './wdbp/wdbp.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PersonWdbpComponent } from './person-wdbp/person-wdbp.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgbModule, WdbpComponent],
+  imports: [RouterOutlet, NgbModule, PersonWdbpComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

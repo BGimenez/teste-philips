@@ -41,7 +41,7 @@ export class WdbpService {
   constructor() { }
 
   
-  obterMetadata(functionName: string, objectCode: string): Metadata {
+  obterMetadata(functionName: string, objectCode: number): Metadata {
     return this.METADATA_DATA;
   }
 }

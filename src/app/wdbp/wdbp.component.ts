@@ -15,7 +15,7 @@ export class WdbpComponent implements OnInit, AfterContentInit {
   
   //Obtido através das anotaçoes @Controller das classes.
   @Input() functionName: string = '';
-  @Input() objectCode: string = '';
+  @Input() objectCode: number = 0;
 
   service: WdbpService = new WdbpService();
   metadata?: Metadata;
