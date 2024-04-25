@@ -7,50 +7,35 @@
             <h4 class="card-title">{{metadata?.title}}</h4>
           </div>
           <div class="col-md-8 justify-content-between">
-            <button type="button" (click)="onPerform()" 
-                    class="btn" rippleEffect>
-                Adicionar
-            </button>
-            <button type="button" (click)="onRemove()" class="btn " rippleEffect>
-                Remover
-            </button>
-            <button type="button" (click)="onOpenDetail()" class="btn " rippleEffect>
-                Ver
-            </button>
+            @if (!isDetail()) {
+              <button type="button" (click)="onPerformNew()" 
+                      class="btn" rippleEffect>
+                  Adicionar
+              </button>
+              <button type="button" (click)="onRemove()" class="btn " rippleEffect>
+                  Remover
+              </button>
+              <button type="button" (click)="onOpenDetail()" class="btn " rippleEffect>
+                  Ver
+              </button>
+            } @else {
+              <button type="button" (click)="onPerformSave()" 
+                      class="btn" rippleEffect>
+                  Salvar
+              </button>
+              <button type="button" (click)="onCancel()" class="btn " rippleEffect>
+                  Cancelar
+              </button>
+            }
           </div>
         </div>
       </div>
-      <div class="table-responsive">
-        @if (metadata?.linhasResultSet) {
-          <table class="table table-striped table-hover">
-            <thead>
-              @for (column of metadata?.fields; track $index) {
-                <th>{{ column.text }}</th>
-              }
-            </thead>
-            <tbody>
-              @for (person of metadata?.linhasResultSet; track person?.id) {
-                <tr>
-                  @for (column of metadata?.fields; track $index) {
-                    <td>
-                      @switch (column.type) {
-                        @case ('BOOLEAN') {
-                          {{getValue(person, column.name) ? 'Sim' : 'Não'}}
-                        }
-                        @default {
-                          {{ getValue(person, column.name) }}
-                        }
-                      }
-                    </td>
-                  }
-                </tr>
-              }
-            </tbody>
-          </table>
+      <div class="card-body">
+        @if (!isDetail()) {
+          <app-wdbp-grid [metadata]="metadata"></app-wdbp-grid>
         } @else {
-          <p>Nenhum registro encontrado!</p>
+          <app-wdbp-detail [metadata]="metadata"></app-wdbp-detail>
         }
-
       </div>
     </div>
   </div>

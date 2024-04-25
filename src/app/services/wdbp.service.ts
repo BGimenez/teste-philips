@@ -16,22 +16,32 @@ export class WdbpService {
     {id: 7, name: 'Paulo', lastName: 'G'},
   ];
   
-  COLUMN_DATA: Fields[] = [
+  GRID_COLUMNS: Fields[] = [
     {name: 'id', text: 'ID', type: 'number'}, 
     {name: 'name', text: 'Name', type: 'string'},
     {name: 'lastName', text: 'Last Name', type: 'string'}
   ];
   
+  FORM_FIELDS: Fields[] = [
+    {name: 'id', label: 'ID', type: 'number', componentType: 'INPUT'}, 
+    {name: 'name', label: 'Name', type: 'text', componentType: 'INPUT'},
+    {name: 'lastName', label: 'Last Name', type: 'text', componentType: 'INPUT'},
+    {name: 'gender', label: 'Gender', type: 'text', componentType: 'RADIO', children: [{name: 'masculino', label: 'Masculino', order: 1, default: true}, {name: 'masculino', label: 'Feminino', order: 2}, {name: 'masculino', label: 'Outros', order: 3}]},
+    {name: 'state', label: 'State', type: 'text', componentType: 'COMBOBOX', children: [{name: 'sp', label: 'São Paulo', value: 'SP', order: 1, default: true}, {name: 'sc', label: 'Santa Catarina', value: 'SC', order: 2}, {name: 'pr', label: 'Paraná', value: 'PR', order: 3}]},
+    {name: 'city', label: 'City', type: 'number', componentType: 'LOCATOR'},
+  ];
+  
   METADATA_DATA: Metadata = {
     title: 'Pessoa Física',
-    fields: [...this.COLUMN_DATA],
+    gridFields: [...this.GRID_COLUMNS],
+    formFields: [...this.FORM_FIELDS],
     linhasResultSet: [...this.ELEMENT_DATA],
   }
 
   constructor() { }
 
   
-  obterMetadata(): Metadata {
+  obterMetadata(functionName: string, objectCode: string): Metadata {
     return this.METADATA_DATA;
   }
 }

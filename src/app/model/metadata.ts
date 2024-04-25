@@ -1,6 +1,7 @@
 export interface Metadata {
     title: string,
-    fields: Fields[],
+    gridFields: Fields[],
+    formFields: Fields[],
     linhasResultSet?: any[],
     ie_add?: boolean,
     ie_remove?: boolean,
@@ -10,6 +11,12 @@ export interface Metadata {
   
   export interface Fields {
     name: string,
-    text: string,
-    type: string,
+    text?: string,
+    type?: string,
+    label?: string,
+    componentType?: string,
+    children?: Fields[],
+    value?: string,
+    order?: number,
+    default?: boolean,
   };

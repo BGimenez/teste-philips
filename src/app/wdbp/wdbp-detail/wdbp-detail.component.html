@@ -1,0 +1,53 @@
+<section id="reactive-forms">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12" >
+                    <form>
+                        <div class="row">
+                            @for (field of metadata?.formFields; track $index) {
+                                <div class="form-group col-md-4">
+                                @switch (field.componentType) {
+                                    @case ('INPUT') {
+                                        <label [for]="field.name">{{field.label}}</label>
+                                        <input class="form-control" [id]="field.name"
+                                                [type]="field.type"/>
+                                    }
+                                    @case ('RADIO') {
+                                        @for (radioItem of field.children; track $index) {
+                                            <div class="form-check col-md-4">
+                                                <input class="form-check-input" type="radio" [name]="radioItem.name" [id]="radioItem.name" [checked]="radioItem.default">
+                                                <label class="form-check-label" [for]="radioItem.name">
+                                                {{radioItem.label}}
+                                                </label>
+                                            </div>
+                                        }
+                                    }
+                                    @case ('COMBOBOX') {
+                                        <label [for]="field.name">{{field.label}}</label>
+                                        <select class="form-select" [id]="field.name">
+                                            <!-- <option selected>---</option> -->
+                                            <option>---</option>
+                                            @for (cbxItem of field.children; track $index) {
+                                                <option [value]="cbxItem.value">{{cbxItem.label}}</option>
+                                            }
+                                        </select>
+                                    }
+                                    @case ('LOCATOR') {
+                                        <label [for]="field.name">{{field.label}}</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" [id]="field.name">
+                                            <button class="btn btn-outline-secondary" type="button">Search</button>
+                                        </div>
+                                    }
+                                }
+                                </div>
+                            }
+                        </div>
+            
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
