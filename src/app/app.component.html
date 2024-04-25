@@ -1,6 +1,24 @@
-<main class="main">
-  <div class="content">
-    <app-wdbp></app-wdbp>
+<nav class="navbar bg-primary fixed-top" data-bs-theme="dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" style="border: none;" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <button class="navbar-toggler" type="button" style="border: none;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <!-- <span class="navbar-toggler-icon"></span> -->
+      Usuário
+      <span class="material-symbols-outlined">
+        person
+        </span>
+    </button>
+  </div>
+</nav>
+
+<main class="container-fluid pt-5 h-100" style="background-color: lightgray;">
+  <div class="row mt-4" #region >
+    <div class="col-md-12">
+      <router-outlet />
+      <app-person-wdbp></app-person-wdbp>
+    </div>
   </div>
 </main>
 
@@ -13,4 +31,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-<router-outlet />
